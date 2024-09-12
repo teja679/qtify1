@@ -15,11 +15,11 @@ const Section = ({ albumType }) => {
   const [albums, setAlbums] = useState([]);
   const [collapse, setCollapse] = useState(true);
   const endpoint = albumType !== 'Songs' ? `albums/${albumType.toLowerCase()}` : `${albumType.toLowerCase()}`;
-
   const fetchData = async () => {
     try {
       const res = await axios.get(`https://qtify-backend-labs.crio.do/${endpoint}`);
       setAlbums(res.data);
+      // console.log(res.data[0])
     } catch (error) {
       console.error('Error fetching albums:', error);
     }

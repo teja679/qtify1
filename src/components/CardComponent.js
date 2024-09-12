@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Card, CardMedia, CardContent, Chip, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import img1 from '../assets/vibratingHeadphone.png'
+import { Link } from 'react-router-dom';
 
 export default function CardComponent({ album, albumType }) {
+
   return (
-    <div>
+    <Link to={`/album/${album.id}`}>
       <Card sx={{ maxWidth: 345, borderRadius: '10px', backgroundColor: 'primary.dark', color: 'primary.light' }}>
         <CardMedia
           width="25%"
@@ -25,6 +27,6 @@ export default function CardComponent({ album, albumType }) {
       >
         {album.title}
       </Typography>
-    </div>
+    </Link>
   );
 }

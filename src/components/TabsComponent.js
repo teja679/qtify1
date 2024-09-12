@@ -87,7 +87,7 @@ export default function TabsComponent({ albums, albumType }) {
       </Box>
 
       {genres.map((genre, idx) => (
-        <CustomTabPanel key={genre.key} value={value} index={idx}>
+        <CustomTabPanel sx={{ p: 0, m: 0 }} key={genre.key} value={value} index={idx}>
           <Carousel albumType={albumType} albums={albumsByGenres[idx]?.value} />
         </CustomTabPanel>
       ))}

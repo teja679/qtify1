@@ -8,7 +8,7 @@ import './Section.css'
 const Carousel = ({ albums, albumType }) => {
     // console.log('album', albums)
     return (
-        <Swiper style={{ margin: '0 1rem' }}
+        <Swiper 
             modules={[Navigation, Pagination]} // Enable navigation and pagination
             spaceBetween={30}                  // Spacing between slides
             slidesPerView={5}                  // Show 3 items per view
