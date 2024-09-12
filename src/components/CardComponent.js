@@ -6,7 +6,7 @@ import img1 from '../assets/vibratingHeadphone.png'
 export default function CardComponent({ album }) {
   // console.log(album)
   return (
-    <>
+    <div>
       <Card sx={{ maxWidth: 345, borderRadius: '10px', backgroundColor: 'primary.dark', color: 'primary.light' }}>
         <CardMedia
           width="25%"
@@ -26,7 +26,7 @@ export default function CardComponent({ album }) {
       >
         {album.title}
       </Typography>
-    </>
+    </div>
   );
 }
 /* 

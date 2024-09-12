@@ -3,33 +3,66 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import CardComponent from './CardComponent'
 import Grid from '@mui/material/Grid2';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import './Section.css'
 
 const Section = ({ albumType }) => {
-	const [topAlbums, setTopAlbums] = useState([])
+	const [albums, setAlbums] = useState([])
+	const [collapse, setCollapse] = useState(true)
+	const [currentSlide, setCurrentSlide] = useState(0)
 	useEffect(() => {
 		const fetchData = async () => {
 			const res = await axios.get(`https://qtify-backend-labs.crio.do/albums/${albumType.toLowerCase()}`)
 			// console.log(res.data)
-			setTopAlbums(res.data)
+			setAlbums(res.data)
 		}
 		fetchData()
 	}, [])
+	const handlePrev = () => {
+		setCurrentSlide((prev) => (prev === 0 ? albums.length - 1 : prev - 1));
+	};
+
+	const handleNext = () => {
+		console.log('Helo')
+		setCurrentSlide((prev) => (prev === albums.length - 1 ? 0 : prev + 1));
+	};
 	return (
-		<Box >
+		<Box sx={{ my: 3, mx: 2 }}>
 			<Box sx={{ gap: '1rem', display: 'flex', justifyContent: 'space-between', mx: 2 }}>
 				<Typography variant='h5' sx={{ color: 'primary.light' }}>{albumType} Albums</Typography>
-				<Button>Collapse</Button>
+				<Button sx={{ textTransform: 'none' }} onClick={(() => setCollapse(!collapse))}>{`${collapse ? 'Show all' : 'Collapse'}`}</Button>
 			</Box>
-			<Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-				<Grid container spacing={3} sx={{ mx: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
-					{topAlbums.map((album) => (
-						<Grid item key={album.id} >
-							<CardComponent album={album} />
-						</Grid>
-					))}
-				</Grid>
+			<Box style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+				{collapse ? (
+					<Box
+						sx={{
+							display: 'flex', justifyContent: 'flex-start', gap: 3, flexWrap: 'nowrap',  // Prevent wrapping of cards
+							overflowX: 'auto', scrollBehavior: 'smooth', width: '100%', margin: 'auto',
+						}}
+					>
+						{albums.map((album, idx) => (
+							<Box key={album.id} sx={{ flex: '0 0 auto' }} className={`indicator ${currentSlide === idx ? 'active' : ''}`} onClick={() => setCurrentSlide(idx)}>
+								<CardComponent album={album} />
+							</Box>
+						))}
+						<ChevronLeftIcon sx={{ backgroundColor: 'primary.main' }} className="btn btn-left"
+							onClick={handlePrev} />
+						<ChevronRightIcon sx={{ backgroundColor: 'primary.main' }} className='btn btn-right'
+							onClick={handleNext} />
+					</Box>
+				)
+					:
+					<Grid container spacing={3} sx={{ mx: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
+						{albums.map((album) => (
+							<Grid item key={album.id} >
+								<CardComponent album={album} />
+							</Grid>
+						))}
+					</Grid>
+				}
 			</Box>
-		</Box>
+		</Box >
 	)
 }
 
