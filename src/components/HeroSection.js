@@ -5,18 +5,16 @@ import vibratingHeadphone from '../assets/vibratingHeadphone.png'
 
 export default function HeroSection() {
   return (
-    <Box sx={{ p: 3, pX: 6, height: '270px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', fontFamily: 'Poppins', backgroundColor: 'primary.dark', color: 'primary.light' }}>
-      <Typography variant='h4'>
-        100 Thousand Songs, add-free Over thousands podcast episodes
+    <Box sx={{ py: 3, px: 6, height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', fontFamily: 'Poppins, sans-serif', backgroundColor: 'primary.dark', color: 'primary.light' }}>
+      <Typography variant='h4' sx={{ flex: 1 }}>
+        100 Thousand Songs, add-free <br /> Over thousands podcast episodes
       </Typography>
       <Box
-        size="large"
-        edge="start"
-        sx={{ m: 2 }}
-      >
-        <img height='300px' sx={{ height: '60px' }} src={vibratingHeadphone} alt='Not found' />
-
-      </Box>
+        component="img"
+        src={vibratingHeadphone}
+        alt="Headphones"
+        sx={{ height: '100%', width: 'auto', maxHeight: '270px' }}
+      />
     </Box >
   );
 }
