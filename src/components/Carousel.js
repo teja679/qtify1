@@ -5,7 +5,8 @@ import 'swiper/css/pagination'; // Swiper pagination styles
 import { Swiper, SwiperSlide } from 'swiper/react';  // React Swiper components
 import { Navigation, Pagination } from 'swiper/modules';
 import './Section.css'
-const Carousel = ({ albums }) => {
+const Carousel = ({ albums, albumType }) => {
+    // console.log('album', albums)
     return (
         <Swiper style={{ margin: '0 1rem' }}
             modules={[Navigation, Pagination]} // Enable navigation and pagination
@@ -15,9 +16,10 @@ const Carousel = ({ albums }) => {
             pagination={{ clickable: true }}   // Enable pagination (dots)
             loop={true}                        // Enable continuous loop mode
         >
-            {albums.map((album) => (
+
+            {albums && albums?.map((album) => (
                 <SwiperSlide key={album.id}>
-                    <CardComponent album={album} />
+                    <CardComponent albumType={albumType} album={album} />
                 </SwiperSlide>
             ))}
         </Swiper>

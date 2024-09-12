@@ -7,20 +7,18 @@ import './Section.css'
 
 import 'swiper/css';           // Swiper core styles
 import 'swiper/css/navigation'; // Swiper navigation styles
-import 'swiper/css/pagination'; // Swiper pagination styles
-import { Swiper, SwiperSlide } from 'swiper/react';  // React Swiper components
-import { Navigation, Pagination } from 'swiper/modules';     // Import navigation and pagination modules
+import 'swiper/css/pagination'; // Swiper pagination styles  
 import Carousel from './Carousel';
 import TabsComponent from './TabsComponent';
 
 
-const Section = ({ albumType }) => {
+const SongsSection = ({ albumType }) => {
 	const [albums, setAlbums] = useState([])
 	const [collapse, setCollapse] = useState(true)
 	const endpoint = albumType !== 'Songs' ? `albums/${albumType.toLowerCase()}` : `${albumType.toLowerCase()}`;
-
 	const fetchData = async () => {
 		const res = await axios.get(`https://qtify-backend-labs.crio.do/${endpoint}`)
+
 		setAlbums(res.data)
 	}
 	useEffect(() => {
@@ -30,15 +28,15 @@ const Section = ({ albumType }) => {
 	return (
 		<Box sx={{ my: 3, mx: 2 }}>
 			<Box sx={{ gap: '1rem', display: 'flex', justifyContent: 'space-between', m: 2 }}>
-				<Typography variant='h5' sx={{ color: 'primary.light' }}>{albumType === 'Songs' ? albumType : albumType + " Albums"}</Typography>
+				<Typography variant='h5' sx={{ color: 'primary.light' }}>{albumType}</Typography>
 				{albumType !== 'Songs'
 					&& <Button sx={{ textTransform: 'none' }} onClick={(() => setCollapse(!collapse))}>{`${collapse ? 'Show all' : 'Collapse'}`}</Button>
 				}
 			</Box>
 			{albumType === 'Songs' ?
-				<>
-					<TabsComponent albums={albums} albumType={albumType} />
-				</>
+				<TabsComponent >
+					{/* <Carousel albumType={true} albums={albums} /> */}
+				</TabsComponent>
 				:
 				<Box style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
 					{collapse ? (
@@ -66,28 +64,4 @@ const Section = ({ albumType }) => {
 	)
 }
 
-export default Section
-/* {
-		"id": "c0e236d9-2cb6-4d9a-bc0b-84d59c486287",
-		"title": "Burdensome Attention",
-		"description": "Iste aliquid voluptates voluptatibus.\nVoluptatum perferendis nisi saepe adipisci culpa eaque quos.",
-		"follows": 11084,
-		"image": "https://images.pexels.com/photos/629159/pexels-photo-629159.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-		"slug": "burdensome-attention",
-		"songs": [
-				{
-						"id": "431c2d98-15e0-443b-adb3-c463c269e86a",
-						"title": "Wabash Cannonball",
-						"artists": [
-								"Felix Raynor PhD",
-								"Gretchen Runte"
-						],
-						"genre": {
-								"key": "pop",
-								"label": "Pop"
-						},
-						"likes": 42475,
-						"image": "https://images.pexels.com/photos/2479312/pexels-photo-2479312.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-						"durationInMs": 28548
-				},
-		 */
+export default SongsSection

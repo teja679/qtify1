@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import HeroSection from './HeroSection'
 import Section from './Section'
 
+
 function Dashboard() {
     return (
         <div className='dashboard' style={{
@@ -11,8 +12,10 @@ function Dashboard() {
         }}>
             <Navbar />
             <HeroSection />
-            <Section albumType={"Top"}/>
-            <Section albumType={"New"}/>
+            <Section albumType={"Top"} />
+            <Section albumType={"New"} />
+            <Section albumType={"Songs"} />
+
         </div>
     )
 }
