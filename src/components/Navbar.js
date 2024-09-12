@@ -2,11 +2,9 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import { InputBase } from '@mui/material';
-import { Search } from "@mui/icons-material";
-import logo from '../assets/logo.png'
 import ButtonComponent from './ButtonComponent';
+import Logo from './Logo';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   return (
@@ -18,34 +16,12 @@ export default function Navbar() {
           edge="start"
           sx={{ mr: 2 }}
         >
-          <img src={logo} alt='logo' className='navbar-logo' />
+          <Logo />
         </Box>
         {/* Search bar */}
-        <Box component="div"
-          size="small"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: 'primary.light',
-            color: 'primary.dark',
-            border: '1px solid',
-            borderColor: 'primary.dark',
-            borderRadius: '5px'
-          }}>
-          <InputBase
-            sx={{
-              color: 'primary.dark',
-              ml: 1, p: 0.5, flex: 1, borderRight: '1px solid #111', width: '15rem', textAlign: 'left'
-            }}
-            placeholder="Search a album of your choice"
-            inputProps={{ "aria-label": "search a album of your choice" }}
-          />
-          <IconButton type="button" aria-label="search">
-            <Search color="primary.dark" />
-          </IconButton>
-        </Box>
+        <SearchBar />
         {/* feebback button */}
-        <ButtonComponent value={'Give Feedback'} />
+        <ButtonComponent text={'Give Feedback'} />
       </Toolbar>
     </AppBar>
   );
