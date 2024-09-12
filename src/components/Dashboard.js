@@ -11,7 +11,8 @@ function Dashboard() {
         }}>
             <Navbar />
             <HeroSection />
-            <Section />
+            <Section albumType={"Top"}/>
+            <Section albumType={"New"}/>
         </div>
     )
 }

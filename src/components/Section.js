@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react'
 import CardComponent from './CardComponent'
 import Grid from '@mui/material/Grid2';
 
-const Section = () => {
+const Section = ({ albumType }) => {
 	const [topAlbums, setTopAlbums] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			const res = await axios.get('https://qtify-backend-labs.crio.do/albums/top')
+			const res = await axios.get(`https://qtify-backend-labs.crio.do/albums/${albumType.toLowerCase()}`)
 			// console.log(res.data)
 			setTopAlbums(res.data)
 		}
@@ -16,12 +16,11 @@ const Section = () => {
 	}, [])
 	return (
 		<Box >
-			<Box sx={{ display: 'flex', justifyContent: 'space-between', mx: 2 }}>
-				<Typography variant='h5' sx={{ color: 'primary.light' }}>Top Albums</Typography>
+			<Box sx={{ gap: '1rem', display: 'flex', justifyContent: 'space-between', mx: 2 }}>
+				<Typography variant='h5' sx={{ color: 'primary.light' }}>{albumType} Albums</Typography>
 				<Button>Collapse</Button>
 			</Box>
 			<Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-
 				<Grid container spacing={3} sx={{ mx: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
 					{topAlbums.map((album) => (
 						<Grid item key={album.id} >

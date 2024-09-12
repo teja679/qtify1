@@ -15,14 +15,14 @@ export default function CardComponent({ album }) {
           height="250"
           image={album.image}
         />
-        <CardContent style={{ padding: '10px' }} sx={{ py: 1, backgroundColor: 'primary.light' }}>
+        <CardContent style={{ padding: '10px' }} sx={{ py: 1, backgroundColor: 'primary.light', textAlign: 'left', }}>
           <Chip label={`${album.follows} Follows`}
             sx={{ color: "primary.light", backgroundColor: 'primary.dark', padding: '4px 8px 4px 8px' }} />
         </CardContent>
       </Card>
       <Typography
         variant="body2"
-        sx={{ color: 'primary.light', textAlign: 'center', mt: 1 }}
+        sx={{ color: 'primary.light', textAlign: 'left', mt: 1 }}
       >
         {album.title}
       </Typography>
@@ -36,14 +36,3 @@ export default function CardComponent({ album }) {
     "follows": 11084,
     "image": "https://images.pexels.com/photos/629159/pexels-photo-629159.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
     "slug": "burdensome-attention", */
-{/* <CardActions>
-  <Button size="small">Share</Button>
-  <Button size="small">Learn More</Button>
-  </CardActions> */}
-{/* <Typography gutterBottom variant="h5" component="div">
-    Lizard
-  </Typography>
-  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-    Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica
-  </Typography> */}
