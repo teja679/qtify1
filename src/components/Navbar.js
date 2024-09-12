@@ -17,13 +17,14 @@ export default function Navbar() {
           size="large"
           edge="start"
           sx={{ mr: 2 }}
-          >
+        >
           <img src={logo} alt='logo' className='navbar-logo' />
         </Box>
         {/* Search bar */}
         <Box component="div"
           size="small"
-          sx={{ display: 'flex',
+          sx={{
+            display: 'flex',
             alignItems: 'center',
             backgroundColor: 'primary.light',
             color: 'primary.dark',
@@ -36,8 +37,8 @@ export default function Navbar() {
               color: 'primary.dark',
               ml: 1, p: 0.5, flex: 1, borderRight: '1px solid #111', width: '15rem', textAlign: 'left'
             }}
-            placeholder="Search a album od your choice"
-            inputProps={{ "aria-label": "search a album od your choice" }}
+            placeholder="Search a album of your choice"
+            inputProps={{ "aria-label": "search a album of your choice" }}
           />
           <IconButton type="button" aria-label="search">
             <Search color="primary.dark" />
