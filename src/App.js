@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard';
-import { ThemeProvider } from '@mui/material/styles';
 
 
 function App() {
