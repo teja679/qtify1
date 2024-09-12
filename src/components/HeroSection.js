@@ -18,27 +18,3 @@ export default function HeroSection() {
     </Box >
   );
 }
-
-/*  <Typography component="div" sx={{ flexGrow: 1 }}>
-     <TextField
-         size="small"
-         sx={{
-             backgroundColor: 'primary.light',
-             color: 'primary.dark',
-             border: '1px solid',
-             borderColor: 'primary.dark',
-             borderRadius: '5px'
-         }}
-         // value={inputValue}
-         // onChange={(e) => debounceSearch(e, debounceTimeout)}
-         InputProps={{
-             endAdornment: (
-                 <InputAdornment position="end" >
-                     <Search color="primary.dark" />
-                 </InputAdornment>
-             ),
-         }}
-         placeholder="Search a album of your choice"
-         name="search"
-     />
- </Typography> */
