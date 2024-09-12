@@ -20,7 +20,7 @@ export default function Navbar() {
             edge="start"
             sx={{ mr: 2 }}
           >
-            <img src={logo} alt='Not found' />
+            <img src={logo} alt='logo' />
           </Box>
           <Box component="div"
             size="small"
