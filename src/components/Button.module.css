@@ -1,0 +1,11 @@
+.myButton {
+    border-radius: '10px';
+    letter-spacing: '1px';
+    padding: '0 10px';
+    text-transform: 'none';
+    font-family: 'Poppins';
+}
+
+.myButton:hover {
+    cursor: pointer;
+}
